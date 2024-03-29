@@ -27,24 +27,33 @@ body {
 }
 
 main {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
-}
-
-/* SAERCH BOX */
-
-.search-box {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    width: 400px;
-    height: 140px;
+    gap: 25px;
+    width: 480px;
+    height: 600px;
     margin-top: 100px;
     padding: 40px 30px;
     border-radius: 20px;
-    text-align: center;
     background: linear-gradient(140deg, var(--peach), var(--light-purple));
+}
+
+/* SAERCH CONTAINER */
+
+.search-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+}
+
+.searchbar-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
 .searchbar {
@@ -56,13 +65,19 @@ main {
     font-size: 18px;
 }
 
-.fa-magnifying-glass {
+.fa-map-location-dot {
     background-color: transparent;
-    width: 40px;
-    height: 40px;
     border-radius: 30px;
     border: none;
-    font-size: 1.5em;
+    font-size: 1.9em;
+
+}
+
+.fa-magnifying-glass {
+    background-color: transparent;
+    border-radius: 30px;
+    border: none;
+    font-size: 1.9em;
     cursor: pointer;
     transition: 0.3s ease;
 }
@@ -71,3 +86,25 @@ main {
     color: var(--white);
 }
 
+/* WEATHER CONTAINER */
+
+.weather-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.location-name {
+    font-size: 40px;
+    font-weight: 400;
+}
+
+.today-temperature {
+    font-size: 60px;
+    font-weight: 600;
+}
+
+.today-description {
+    font-size: 30px;
+}

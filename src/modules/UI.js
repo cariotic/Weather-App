@@ -31,6 +31,17 @@ export default class UI {
         
         const data = await WeatherHandler.getWeatherData(location);
         console.log(data);
+        UI.displayWeatherData(data);
     }
     
+    static displayWeatherData(data) {
+        const locationName = document.querySelector('.location-name');
+        const icon = document.querySelector('#today-icon');
+        const temperature = document.querySelector('.today-temperature');
+        const description = document.querySelector('.today-description');
+
+        locationName.textContent = data.location.name;
+        temperature.textContent = `${data.current.temp_c} °C`;
+        description.textContent = data.current.condition.text;
+    }
 }
