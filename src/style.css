@@ -3,7 +3,7 @@
     --light-purple: #824D74;
     --peach: #FDAF7B;
     --light-brown: #BE7B72;
-    --white: #FAF0E6;
+    --off-white: #FAF0E6;
 }
 
 *,
@@ -16,8 +16,10 @@
 
 body {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    gap: 124px;
     width: 100%;
     height: 100%;
     margin: 0;
@@ -26,7 +28,7 @@ body {
     font-size: 16px;
 }
 
-main {
+.box-section {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -61,7 +63,7 @@ main {
     border: 0;
     outline: 0;
     border-radius: 20px;
-    background-color: var(--white);
+    background-color: var(--off-white);
     font-size: 18px;
 }
 
@@ -83,16 +85,22 @@ main {
 }
 
 .fa-magnifying-glass:hover {
-    color: var(--white);
+    color: var(--off-white);
 }
 
 /* WEATHER CONTAINER */
 
 .weather-container {
-    display: flex;
+    display: none;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
 
+.visible {
+    display: flex;
 }
 
 .location-name {
@@ -100,11 +108,48 @@ main {
     font-weight: 400;
 }
 
-.today-temperature {
-    font-size: 60px;
+.todays-weather-icon {
+    width: 124px;
+    height: 124px;
+}
+
+.todays-temperature {
+    font-size: 80px;
     font-weight: 600;
 }
 
-.today-description {
+.todays-description {
     font-size: 30px;
+}
+
+/* FORECAST SECTION */
+
+.forecast-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 82px;
+    color: var(--off-white);
+    font-size: 32px;
+}
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.date {
+    
+    font-weight: 400;
+}
+
+.temperature {
+    font-size: 32px;
+    font-weight: 500;
+}
+
+.icon {
+
 }

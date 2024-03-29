@@ -29,19 +29,61 @@ export default class UI {
             return;
         }
         
-        const data = await WeatherHandler.getWeatherData(location);
-        console.log(data);
-        UI.displayWeatherData(data);
+        const currentWeatherData = await WeatherHandler.getCurrentWeather(location);
+        const forecastData = await WeatherHandler.getWeatherForecast(location);
+        console.log(currentWeatherData);
+        console.log(forecastData);
+        UI.displayCurrentWeather(currentWeatherData);
+        UI.displayForecast(forecastData);
     }
     
-    static displayWeatherData(data) {
-        const locationName = document.querySelector('.location-name');
-        const icon = document.querySelector('#today-icon');
-        const temperature = document.querySelector('.today-temperature');
-        const description = document.querySelector('.today-description');
+    static displayCurrentWeather(data) {
+        if(data === null){
+            return;
+        }
 
+        const weatherContainer = document.querySelector('.weather-container');
+        const locationName = document.querySelector('.location-name');
+        const icon = document.querySelector('.todays-weather-icon');
+        const temperature = document.querySelector('.todays-temperature');
+        const description = document.querySelector('.todays-description');
+
+        weatherContainer.classList.add('visible');
         locationName.textContent = data.location.name;
+        icon.src = `https:${data.current.condition.icon}`;
         temperature.textContent = `${data.current.temp_c} °C`;
         description.textContent = data.current.condition.text;
+    }
+
+    static displayForecast(data) {
+        if(data === null) {
+            return;
+        }
+
+        const forecast = data.forecast.forecastday;
+        console.log(typeof forecast);
+        forecast.forEach(day => UI.displayWeather(day));
+    }
+
+    static displayWeather(day) {
+        const forecast = document.querySelector('.forecast-section');
+        const dayContainer = document.createElement('div');
+        const date = document.createElement('p');
+        const icon = document.createElement('img');
+        const temperature = document.createElement('p');
+
+        dayContainer.classList.add('day-container');
+        date.classList.add('date');
+        icon.classList.add('weather-icon');
+        temperature.classList.add('temperature');
+    
+        date.textContent = day.date;
+        icon.src = `https:${day.day.condition.icon}`;
+        temperature.textContent = `${day.day.avgtemp_c} °C`;
+
+        dayContainer.append(date);
+        dayContainer.append(icon);
+        dayContainer.append(temperature);
+        forecast.append(dayContainer);
     }
 }
