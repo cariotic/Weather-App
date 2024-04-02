@@ -39,16 +39,21 @@ export default class UI {
     
     static displayCurrentWeather(data) {
         if(data === null){
+            UI.displayLocationNotFound();
             return;
         }
 
+        const boxSection = document.querySelector('.box-section');
+        const invalidLocationMessage = document.querySelector('.invalid-location');
         const weatherContainer = document.querySelector('.weather-container');
         const locationName = document.querySelector('.location-name');
         const icon = document.querySelector('.todays-weather-icon');
         const temperature = document.querySelector('.todays-temperature');
         const description = document.querySelector('.todays-description');
 
-        weatherContainer.classList.add('visible');
+        boxSection.style.height = '600px';
+        invalidLocationMessage.style.display = 'none';
+        weatherContainer.style.display = 'flex';
         locationName.textContent = data.location.name;
         icon.src = `https:${data.current.condition.icon}`;
         temperature.textContent = `${data.current.temp_c} °C`;
@@ -60,8 +65,10 @@ export default class UI {
             return;
         }
 
+        UI.removeForecastData();
+        const forecastSection = document.querySelector('.forecast-section');
+        forecastSection.style.display = 'flex';
         const forecast = data.forecast.forecastday;
-        console.log(typeof forecast);
         forecast.forEach(day => UI.displayWeather(day));
     }
 
@@ -85,5 +92,22 @@ export default class UI {
         dayContainer.append(icon);
         dayContainer.append(temperature);
         forecast.append(dayContainer);
+    }
+
+    static displayLocationNotFound() {
+        const boxSection = document.querySelector('.box-section');
+        const invalidLocationMessage = document.querySelector('.invalid-location');
+        const weatherContainer = document.querySelector('.weather-container');
+        const forecastSection = document.querySelector('.forecast-section');
+
+        boxSection.style.height = '160px';
+        invalidLocationMessage.style.display = 'block';
+        weatherContainer.style.display = 'none';
+        forecastSection.style.display = 'none';
+    }
+
+    static removeForecastData() {
+        const forecastSection = document.querySelector('.forecast-section');
+        forecastSection.innerHTML = '';
     }
 }

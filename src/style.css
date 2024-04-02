@@ -4,6 +4,8 @@
     --peach: #FDAF7B;
     --light-brown: #BE7B72;
     --off-white: #FAF0E6;
+    --green: #96C291;
+    --pink: #FFC5C5;
 }
 
 *,
@@ -35,11 +37,11 @@ body {
     align-items: center;
     gap: 25px;
     width: 480px;
-    height: 600px;
+    height: 120px;
     margin-top: 100px;
     padding: 40px 30px;
     border-radius: 20px;
-    background: linear-gradient(140deg, var(--peach), var(--light-purple));
+    background: linear-gradient(140deg, var(--green), var(--pink));
 }
 
 /* SAERCH CONTAINER */
@@ -99,10 +101,6 @@ body {
     margin-bottom: 20px;
 }
 
-.visible {
-    display: flex;
-}
-
 .location-name {
     font-size: 40px;
     font-weight: 400;
@@ -141,7 +139,6 @@ body {
 }
 
 .date {
-    
     font-weight: 400;
 }
 
@@ -150,6 +147,10 @@ body {
     font-weight: 500;
 }
 
-.icon {
+/* INVALID LOCATION ERROR */
 
+.invalid-location {
+    display: none;
+    font-size: 22px;
+    margin-bottom: 12px;
 }

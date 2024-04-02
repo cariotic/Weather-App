@@ -6,12 +6,17 @@ export default class WeatherHandler {
 
         try {
             const response = await fetch(url, {mode: 'cors'});
-            const data = await response.json();
-            return data;
+            console.log(response);
+
+            if(response.status === 200) {
+                const data = await response.json();
+                return data;
+            }
+            else {
+                throw new Error(response.status);
+            }
             
-        } catch(err) {
-            // TODO: fix
-            alert(err);
+        } catch(error) {
             return null;
         }
     }
@@ -21,12 +26,17 @@ export default class WeatherHandler {
 
         try {
             const response = await fetch(url, {mode: 'cors'});
-            const data = await response.json();
-            return data;
+            console.log(response);
 
-        } catch(err) {
-            // TODO: fix
-            alert(err);
+            if(response.status === 200) {
+                const data = await response.json();
+                return data;
+            }
+            else {
+                throw new Error(response.status);
+            }
+
+        } catch(error) {
             return null;
         }
     }
