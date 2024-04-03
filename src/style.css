@@ -2,10 +2,7 @@
     --dark-purple: #030637;
     --light-purple: #824D74;
     --peach: #FDAF7B;
-    --light-brown: #BE7B72;
     --off-white: #FAF0E6;
-    --green: #96C291;
-    --pink: #FFC5C5;
 }
 
 *,
@@ -41,7 +38,7 @@ body {
     margin-top: 100px;
     padding: 40px 30px;
     border-radius: 20px;
-    background: linear-gradient(140deg, var(--green), var(--pink));
+    background: linear-gradient(140deg, var(--light-purple), var(--peach));
     transition: height 0.4s;
 }
 
