@@ -6,7 +6,6 @@ export default class WeatherHandler {
 
         try {
             const response = await fetch(url, {mode: 'cors'});
-            console.log(response);
 
             if(response.status === 200) {
                 const data = await response.json();
@@ -26,7 +25,6 @@ export default class WeatherHandler {
 
         try {
             const response = await fetch(url, {mode: 'cors'});
-            console.log(response);
 
             if(response.status === 200) {
                 const data = await response.json();

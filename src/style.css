@@ -23,7 +23,8 @@ body {
     height: 100%;
     margin: 0;
     background-color: var(--dark-purple);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
     font-size: 16px;
 }
 
@@ -95,13 +96,17 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    width: 100%;
     padding: 20px;
-    margin-bottom: 20px;
+    animation-name: fade;
+    animation-duration: 0.5s;
+    animation-delay: 0.3s;
+    animation-fill-mode: backwards;
 }
 
 .location-name {
     font-size: 40px;
-    font-weight: 400;
+    font-weight: 600;
 }
 
 .todays-weather-icon {
@@ -111,11 +116,25 @@ body {
 
 .todays-temperature {
     font-size: 80px;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .todays-description {
     font-size: 30px;
+}
+
+.weather-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.feels-like, .humidity, .wind-speed {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* FORECAST SECTION */
@@ -136,7 +155,7 @@ body {
     gap: 24px;
     animation-name: fade;
     animation-duration: 1s;
-    animation-delay: 0.4s;
+    animation-delay: 1s;
     animation-fill-mode: backwards;
 }
 
@@ -155,7 +174,7 @@ body {
 
 .temperature {
     font-size: 32px;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 /* INVALID LOCATION ERROR */

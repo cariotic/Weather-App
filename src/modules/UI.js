@@ -1,18 +1,8 @@
-// import background from '../assets/background.jpg';
 import WeatherHandler from './WeatherHandler';
 
 export default class UI {
 
     static loadHomepage() {
-        // const img = new Image();
-        // img.src = background;
-
-        // const page = document.querySelector('body');
-        // page.style.backgroundImage = `url('${background}')`;
-        // page.style.backgroundRepeat = 'no-repeat';
-        // page.style.backgroundSize = 'cover';
-        // page.style.backgroundPosition = 'center top';
-
         UI.initSearchButton();
     }
 
@@ -31,8 +21,6 @@ export default class UI {
         
         const currentWeatherData = await WeatherHandler.getCurrentWeather(location);
         const forecastData = await WeatherHandler.getWeatherForecast(location);
-        console.log(currentWeatherData);
-        console.log(forecastData);
         UI.displayCurrentWeather(currentWeatherData);
         UI.displayForecast(forecastData);
     }
@@ -43,12 +31,18 @@ export default class UI {
         const icon = document.querySelector('.todays-weather-icon');
         const temperature = document.querySelector('.todays-temperature');
         const description = document.querySelector('.todays-description');
+        const feelsLike = document.querySelector('.todays-feels-like');
+        const humidity = document.querySelector('.todays-humidity');
+        const windSpeed = document.querySelector('.todays-wind-speed');
 
         weatherContainer.style.display = 'flex';
         locationName.textContent = data.location.name;
         icon.src = `https:${data.current.condition.icon}`;
         temperature.textContent = `${data.current.temp_c} °C`;
         description.textContent = data.current.condition.text;
+        feelsLike.textContent = `${data.current.feelslike_c} °C`;
+        humidity.textContent = `${data.current.humidity} %`;
+        windSpeed.textContent = `${data.current.wind_kph} km/h`;
     }
 
     static displayCurrentWeather(data) {
@@ -62,11 +56,11 @@ export default class UI {
         const invalidLocationMessage = document.querySelector('.invalid-location');
         invalidLocationMessage.style.display = 'none';
 
-        if(boxSection.style.height === '600px') {
+        if(boxSection.style.height > '600px') {
             delay = 0;
         }
 
-        boxSection.style.height = '600px';
+        boxSection.style.height = '620px';
         setTimeout(() => UI.displayCurrentWeatherData(data), delay);
     }
 
@@ -94,7 +88,10 @@ export default class UI {
         icon.classList.add('weather-icon');
         temperature.classList.add('temperature');
     
-        date.textContent = day.date;
+        const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const dayOfWeekNumber = new Date(day.date).getDay();
+        const dayOfWeek = weekdays[dayOfWeekNumber];
+        date.textContent = dayOfWeek;
         icon.src = `https:${day.day.condition.icon}`;
         temperature.textContent = `${day.day.avgtemp_c} °C`;
 
