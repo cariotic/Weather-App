@@ -37,27 +37,37 @@ export default class UI {
         UI.displayForecast(forecastData);
     }
     
-    static displayCurrentWeather(data) {
-        if(data === null){
-            UI.displayLocationNotFound();
-            return;
-        }
-
-        const boxSection = document.querySelector('.box-section');
-        const invalidLocationMessage = document.querySelector('.invalid-location');
+    static displayCurrentWeatherData(data) {
         const weatherContainer = document.querySelector('.weather-container');
         const locationName = document.querySelector('.location-name');
         const icon = document.querySelector('.todays-weather-icon');
         const temperature = document.querySelector('.todays-temperature');
         const description = document.querySelector('.todays-description');
 
-        boxSection.style.height = '600px';
-        invalidLocationMessage.style.display = 'none';
         weatherContainer.style.display = 'flex';
         locationName.textContent = data.location.name;
         icon.src = `https:${data.current.condition.icon}`;
         temperature.textContent = `${data.current.temp_c} °C`;
         description.textContent = data.current.condition.text;
+    }
+
+    static displayCurrentWeather(data) {
+        if(data === null){
+            UI.displayLocationNotFound();
+            return;
+        }
+
+        let delay = 400;
+        const boxSection = document.querySelector('.box-section');
+        const invalidLocationMessage = document.querySelector('.invalid-location');
+        invalidLocationMessage.style.display = 'none';
+
+        if(boxSection.style.height === '600px') {
+            delay = 0;
+        }
+
+        boxSection.style.height = '600px';
+        setTimeout(() => UI.displayCurrentWeatherData(data), delay);
     }
 
     static displayForecast(data) {

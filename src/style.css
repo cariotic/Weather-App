@@ -42,6 +42,7 @@ body {
     padding: 40px 30px;
     border-radius: 20px;
     background: linear-gradient(140deg, var(--green), var(--pink));
+    transition: height 0.4s;
 }
 
 /* SAERCH CONTAINER */
@@ -136,6 +137,19 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 24px;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-delay: 0.4s;
+    animation-fill-mode: backwards;
+}
+
+@keyframes fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .date {
